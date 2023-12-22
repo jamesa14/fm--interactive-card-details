@@ -4,65 +4,44 @@ const cardExpiry = document.querySelector('[data-type=card-expiry]');
 const cardCvc = document.querySelector('[data-type=card-cvc]');
 const form = document.querySelector('form');
 const formInputs = document.querySelectorAll('.form-input');
+const cardNumberInput = document.querySelector('#card-number');
+const cardCvcInput = document.querySelector('#card-cvc');
+const cardExpiryInput = document.querySelector('#card-expiry');
 
-// listen down keydown on form inputs
-// find matching field for current input keydown is occurring on
-// match changing value of input to corresponding card div
 
 function replaceNonNumeric(value) {
-  return value.replace(/[^0-9]/g, '');
+  return value.replace(/[^0-9]/g, ''); // replaces any non-numeric characters
 }
 
 function formatCardNumber(value) {
   return value.replace(/(\d{4})(?=\d)/g, '$1 '); // i.e. 0000 0000 0000 0000
 }
 
-document.getElementById('card-cvc').addEventListener('input', function(event) {
-  // Get the input value
-  let inputValue = event.target.value;
+function validateFields(e) {
+  const inputId = e.target.id;
 
-  // Remove non-numeric characters using a regular expression
-  let numericValue = replaceNonNumeric(inputValue);
+  if (inputId === 'card-number') {
+    let inputValue = e.target.value;
+    let numericValue = replaceNonNumeric(inputValue);
+    numericValue = formatCardNumber(numericValue);
+    e.target.value = numericValue;
+    return;
+  }
 
-  // Update the input value with the numeric characters only
-  event.target.value = numericValue;
-});
+  if (
+    inputId === 'card-expiry-month' || 
+    inputId === 'card-expiry-year' ||
+    inputId === 'card-cvc') {
+      let inputValue = e.target.value;
+      let numericValue = replaceNonNumeric(inputValue);
+      e.target.value = numericValue;
+      return;
+  }
 
-document.getElementById('card-number').addEventListener('input', function(event) {
-  // Get the input value
-  let inputValue = event.target.value;
+  return;
+}
 
-  // Remove non-numeric characters using a regular expression
-  let numericValue = replaceNonNumeric(inputValue);
-
-  // Split the numeric value into groups of 4 with spaces
-  numericValue = formatCardNumber(numericValue);
-
-  // Update the input value with the formatted numeric characters
-  event.target.value = numericValue;
-});
-
-document.getElementById('card-expiry-month').addEventListener('input', function(event) {
-  // Get the input value
-  let inputValue = event.target.value;
-
-  // Remove non-numeric characters using a regular expression
-  let numericValue = replaceNonNumeric(inputValue);
-
-  // Update the input value with the numeric characters only
-  event.target.value = numericValue;
-});
-
-document.getElementById('card-expiry-year').addEventListener('input', function(event) {
-  // Get the input value
-  let inputValue = event.target.value;
-
-  // Remove non-numeric characters using a regular expression
-  let numericValue = replaceNonNumeric(inputValue);
-
-  // Update the input value with the numeric characters only
-  event.target.value = numericValue;
-});
+formInputs.forEach(input => addEventListener('input', validateFields));
 
 function handleCardUpdate(e) {
   const matchingCardElement = document.querySelector(`[data-type=${e.target.id}]`);
@@ -72,7 +51,6 @@ function handleCardUpdate(e) {
 }
 
 formInputs.forEach(input => addEventListener('keyup', handleCardUpdate));
-
 
 
 function handleFormSubmit(e) {
