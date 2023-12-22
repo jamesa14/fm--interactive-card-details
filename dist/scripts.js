@@ -1,13 +1,13 @@
 const cardNumber = document.querySelector('[data-type=card-number]');
 const cardName = document.querySelector('[data-type=card-name]');
-const cardExpiry = document.querySelector('[data-type=card-expiry]');
+const cardExpiryMonth = document.querySelector('[data-type=card-expiry-month]');
+const cardExpiryYear = document.querySelector('[data-type=card-expiry-year]');
 const cardCvc = document.querySelector('[data-type=card-cvc]');
 const form = document.querySelector('form');
 const formInputs = document.querySelectorAll('.form-input');
 const cardNumberInput = document.querySelector('#card-number');
 const cardCvcInput = document.querySelector('#card-cvc');
 const cardExpiryInput = document.querySelector('#card-expiry');
-
 
 function replaceNonNumeric(value) {
   return value.replace(/[^0-9]/g, ''); // replaces any non-numeric characters
@@ -96,11 +96,36 @@ function handleFormSubmit(e) {
 
 form.addEventListener('submit', handleFormSubmit);
 
+function resetCard() {
+  cardNumber.textContent = '0000 0000 0000 0000';
+  cardName.textContent = 'John Smith';
+  cardExpiryMonth.textContent = '00';
+  cardExpiryYear.textContent = '00';
+  cardCvc.textContent = '000';
+};
+
+// success message
 function successMessage() {
   const markup = `
-    <h2>Thank You!</h2>
-    <p>We've added your card details</p>
-    <button class="js--dismiss-success-message mt-5 bg-black hover:bg-[#333] text-white py-4 px-2 w-full rounded-lg">Continue</button>
+    <div id="form-success" class="min-w-96 w-full flex flex-col items-center">
+      <img src="/dist/images/icon-complete.svg" alt="Tick icon" class="mb-5">
+      <h2 class="uppercase tracking-widest text-3xl mb-4">Thank You!</h2>
+      <p class="mb-5">We've added your card details</p>
+      <button class="js--dismiss-success-message mt-5 bg-black hover:bg-[#333] text-white py-4 px-2 w-full rounded-lg">Continue</button>
+    </div>
   `;
   return markup;
 }
+
+function closeSuccess() {
+  form.classList.remove('hidden');
+  document.querySelector('#form-success').remove(); // remove the success element from the DOM
+  form.reset();
+  resetCard();
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('js--dismiss-success-message')) {
+    closeSuccess();
+  }
+});

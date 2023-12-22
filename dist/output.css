@@ -628,6 +628,22 @@ label, legend {
   margin-top: 1.25rem;
 }
 
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.flex {
+  display: flex;
+}
+
 .grid {
   display: grid;
 }
@@ -650,6 +666,10 @@ label, legend {
 
 .min-w-0 {
   min-width: 0px;
+}
+
+.min-w-96 {
+  min-width: 24rem;
 }
 
 .max-w-80 {
@@ -677,8 +697,16 @@ label, legend {
   grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-end {
   align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
 }
 
 .gap-20 {
@@ -747,6 +775,15 @@ label, legend {
   padding-top: 8rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .text-\[1\.75rem\] {
   font-size: 1.75rem;
 }
@@ -754,6 +791,11 @@ label, legend {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .uppercase {
