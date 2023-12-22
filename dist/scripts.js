@@ -108,7 +108,7 @@ function resetCard() {
 function successMessage() {
   const markup = `
     <div id="form-success" class="min-w-96 w-full flex flex-col items-center">
-      <img src="/dist/images/icon-complete.svg" alt="Tick icon" class="mb-5">
+      <img src="dist/images/icon-complete.svg" alt="Tick icon" class="mb-5">
       <h2 class="uppercase tracking-widest text-3xl mb-4">Thank You!</h2>
       <p class="mb-5">We've added your card details</p>
       <button class="js--dismiss-success-message mt-5 bg-black hover:bg-[#333] text-white py-4 px-2 w-full rounded-lg">Continue</button>
