@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="dist/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="bg-white">
+  <div class="pt-32 pb-10 px-6 grid grid-cols-12 gap-20 max-w-[1200px] mx-auto">
+    <div class="col-span-6 card-wrapper grid">
+      <div class="card-front me-auto mb-10 bg-cover relative w-[447px] h-[245px] grid grid-cols-2 grid-rows-4 items-end p-6 text-white">
+        <div class="absolute top-5 left-6">
+          <img src="dist/images/card-logo.svg" alt="">
+        </div>
+  
+        <div class="col-span-2 row-span-3 tracking-widest text-[1.75rem]" data-type="card-number">
+          0000 0000 0000 0000
+        </div>
+        <div class="col-span-1 max-w-80 uppercase tracking-widest text-sm" data-type="card-name">
+          James Ashley
+        </div>
+        <div class="col-span-1 ms-auto tracking-widest text-sm">
+          <span data-type="card-expiry-month">00</span>/<span data-type="card-expiry-year">00</span>
+        </div>
+      </div>
+  
+      <div class="card-back ms-auto bg-cover relative w-[447px] h-[245px] grid grid-cols-2 grid-rows-4 items-end text-white px-16">
+        <div class="col-span-2 row-span-2 ms-auto translate-y-2" data-type="card-cvc">
+          000
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-wrapper col-span-5 ms-auto pt-10">
+      <form>
+        <div class="mb-6">
+          <label for="card-name">Cardholder Name</label>
+          <input type="text" id="card-name" placeholder="e.g. James Ashley" class="form-input">
+          <div class="error-message"></div>
+        </div>
+    
+        <div class="mb-6">
+          <label for="card-number">Card Number</label>
+          <input type="text" id="card-number" placeholder="e.g. 1234 5678 9123 0000" class="form-input" maxlength="19">
+          <div class="error-message"></div>
+        </div>
+    
+        <div class="grid grid-cols-12 gap-6 mb-6">
+          <fieldset class="col-span-6 grid grid-cols-2 gap-3">
+            <legend>Exp. Date (MM/YY)</legend>
+            <div class="col-span-1">
+              <input type="text" id="card-expiry-month" placeholder="MM" class="form-input min-w-0" maxlength="2">
+              <div class="error-message"></div>
+            </div>
+            <div class="col-span-1">
+              <input type="text" id="card-expiry-year" placeholder="YY" class="form-input min-w-0" maxlength="2">
+              <div class="error-message"></div>
+            </div>
+          </fieldset>
+      
+          <div class="col-span-6">
+            <label for="card-cvc">CVC</label>
+            <input type="text" id="card-cvc" placeholder="e.g. 123" class="form-input min-w-0" maxlength="3">
+            <div class="error-message"></div>
+          </div>
+        </div>
+    
+        <button type="submit" class="mt-5 bg-black hover:bg-[#333] text-white py-4 px-2 w-full rounded-lg">Confirm</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="dist/scripts.js"></script>
+</body>
+</html>

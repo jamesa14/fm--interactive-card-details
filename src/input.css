@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  input {
+    @apply w-full min-w-96;
+  }
+
+  label, legend {
+    @apply mb-2 block leading-normal tracking-widest uppercase text-sm;
+  }
+}
+
+@layer {
+  body:before {
+    content: "";
+    height: 100vh;
+    width: 35vw;
+    background-image: url('images/bg-main-desktop.png');
+    background-size: cover;
+    display: block;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+  }
+
+  .card-front {
+    background-image: url('images/bg-card-front.png');
+  }
+
+  .card-back {
+    background-image: url('images/bg-card-back.png');
+  }
+
+  .error-message {
+    @apply text-red-600 text-xs mt-1;
+  }
+} 
+
+label {
+  @apply block uppercase tracking-wider text-sm;
+}
+
+.form-input {
+  @apply border rounded-md py-3 px-4;
+}
